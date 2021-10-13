@@ -1,0 +1,22 @@
+{
+  "name": "project3",
+  "version": "1.0.0",
+  "description": "Mr Coffee scheduling web app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscarlappay/-incode6-git-project3.git"
+  },
+  "author": "Oscar Lappay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oscarlappay/-incode6-git-project3/issues"
+  },
+  "homepage": "https://github.com/oscarlappay/-incode6-git-project3#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
