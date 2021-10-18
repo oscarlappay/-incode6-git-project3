@@ -52,7 +52,7 @@ app.post('/users', (req, res) => {
   const password = req.body.password
   const salt = bcrypt.genSaltSync(10)
   const hash = bcrypt.hashSync(password, salt)
-
+  req.body.password = hash
   // TODO: Add hash to user object and then push to user array
   data.users.push(req.body)
   res.send(req.body)
