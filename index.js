@@ -1,5 +1,5 @@
 const express = require('express')
-//const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs')
 const data = require('./data')
 const app = express() // invoke express in order to create an instance
 
@@ -27,44 +27,36 @@ app.get('/schedules', (req, res) => {
 
 // Get individual user
 app.get('/users/:id', (req, res) => {
-  // TODO: Validate req.params.id
-
   const user = data.users[req.params.id]
   res.send(user)
 })
 
-
-app.get('/users/:user_id/schedules', (req,res) => {
-
-  const uschedule = data.schedules[req.params.user_id].filter()
+//Get user's schedules
+app.get('/users/:id/schedules', (req,res) => {
+  const uschedule = data.schedules.filter(schedule => schedule.user_id == Number(req.params.id))
   res.send(uschedule)  
 })
 
-// Create new post
-app.post('/posts', (req, res) => {
+// Create new schedules
+app.post('/schedules', (req, res) => {
   // TODO: Validate data
 
-  // Add post to all posts
-  //data.posts.push(req.body)
-  //res.send(req.body)
+  //Add new schedules to all schedules
+  data.schedules.push(req.body)
+  res.send(req.body)
 })
 
 // Create new user
 app.post('/users', (req, res) => {
   // Using bcryptjs
   const password = req.body.password
-  //const salt = bcrypt.genSaltSync(10)
- //const hash = bcrypt.hashSync(password, salt)
+  const salt = bcrypt.genSaltSync(10)
+  const hash = bcrypt.hashSync(password, salt)
 
   // TODO: Add hash to user object and then push to user array
-  res.send(hash)
+  data.users.push(req.body)
+  res.send(req.body)
 })
-
-
-
-// CRUD -          Create, Read, Update,    Delete
-// HTTP METHODS  - post,   get,  put/patch, delete
-
 
 app.listen(PORT, () => {
   console.log(`App is listening at http://localhost:${PORT}`)
