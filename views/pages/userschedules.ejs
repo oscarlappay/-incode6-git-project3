@@ -14,28 +14,28 @@
     <table>
       <thead>
         <tr>
-          <th>User ID</th>
+          <th>User Name</th>
           <th>Day</th>
-          <th>Start at</th>
-          <th>End at</th>
+          <th>Start Time</th>
+          <th>End Time</th>
         </tr>
       </thead>
       <tbody>
-        <% for (let i = 0; i < schedules.length; i++) { %>
+        <% for (let i = 0; i < userschedules.length; i++) { %>
           <tr>
-            <td><%= schedules[i].user_id %></td>
-            <% for (let j = 0; j < days.length+1; j++) { %>
-              <% if((schedules[i].day)==j) {%>
-            <td><%= days[j-1] %></td>
+            <td><%= userschedules[i].username %></td>
+            <% for (let j = 0; j < days.length; j++) { %>
+              <% if((userschedules[i].day)==j) {%>
+            <td><%= days[j] %></td>
             <% } %>
             <% } %>
-            <td><%= schedules[i].start_at %></td>
-            <td><%= schedules[i].end_at %></td>
+            <td><%= userschedules[i].start_time %></td>
+            <td><%= userschedules[i].end_time %></td>
           </tr>
         <% } %>
       </tbody>
     </table>
-    <a href = "/schedules/new">New Schedule</a>
+    <a href = "/userschedule/new">New User Schedule</a>
   </main>
 </body>
 </html>
